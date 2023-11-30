@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TeamServiceImpl implements TeamService{
+public class TeamServiceImpl implements ITeamService {
     @Override
     public List<TeamDto> getAllTeams() {
         return null;
@@ -24,8 +24,8 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @Override
-    public void addNewTeam(TeamDto teamDto) {
-
+    public TeamDto addNewTeam(TeamDto teamDto) {
+        return teamDto;
     }
 
     @Override

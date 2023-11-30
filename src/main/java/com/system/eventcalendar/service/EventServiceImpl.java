@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class EventServiceImpl implements EventService{
+public class EventServiceImpl implements IEventService {
     @Override
     public List<EventDto> getAllEvents() {
         return null;
@@ -30,17 +30,17 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public void addNewEvent(EventDto eventDto) {
-
+    public EventDto addNewEvent(EventDto eventDto) {
+        return eventDto;
     }
 
     @Override
-    public void deleteEventById(Long id) {
-
+    public EventDto deleteEventById(Long id) {
+        return null;
     }
 
     @Override
-    public void updateEventById(Long id, EventDto updatedEvent) {
-
+    public EventDto updateEventById(EventDto updatedEvent) {
+        return updatedEvent;
     }
 }

@@ -5,11 +5,11 @@ import com.system.eventcalendar.dto.TeamDto;
 
 import java.util.List;
 
-public interface TeamService {
+public interface ITeamService {
     List<TeamDto> getAllTeams();
     TeamDto getTeamById(Long id);
     List<TeamDto> getTeamsBySport(SportDto sportDto);
-    void addNewTeam(TeamDto teamDto);
+    TeamDto addNewTeam(TeamDto teamDto);
     TeamDto deleteTeamById(Long id);
 
 }

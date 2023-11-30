@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SportServiceImpl implements SportService{
+public class SportServiceImpl implements ISportService {
     @Override
     public List<SportDto> getAllSportTypes() {
         return null;
@@ -23,8 +23,8 @@ public class SportServiceImpl implements SportService{
     }
 
     @Override
-    public void addNewSport(SportDto sportDto) {
-
+    public SportDto addNewSport(SportDto sportDto) {
+        return sportDto;
     }
 
     @Override

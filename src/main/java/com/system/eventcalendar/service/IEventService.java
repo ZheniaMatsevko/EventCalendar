@@ -6,12 +6,12 @@ import com.system.eventcalendar.dto.SportDto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface EventService {
+public interface IEventService {
     List<EventDto> getAllEvents();
     EventDto getEventById(long id);
     List<EventDto> getEventsByDate(LocalDateTime date);
     List<EventDto> getEventsBySport(SportDto sport);
-    void addNewEvent(EventDto eventDto);
-    void deleteEventById(Long id);
-    void updateEventById(Long id, EventDto updatedEvent);
+    EventDto addNewEvent(EventDto eventDto);
+    EventDto deleteEventById(Long id);
+    EventDto updateEventById(EventDto updatedEvent);
 }
