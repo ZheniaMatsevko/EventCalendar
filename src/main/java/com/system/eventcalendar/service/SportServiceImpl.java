@@ -1,9 +1,11 @@
 package com.system.eventcalendar.service;
 
 import com.system.eventcalendar.dto.SportDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SportServiceImpl implements SportService{
     @Override
     public List<SportDto> getAllSportTypes() {
