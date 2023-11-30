@@ -5,16 +5,16 @@ import java.time.LocalDateTime;
 public class EventDto {
     private Long id;
     private String description;
-    private LocalDateTime eventDateTime;
+    private LocalDateTime dateTime;
     private SportDto sportType;
     private TeamDto team1;
     private TeamDto team2;
 
 
-    public EventDto(Long id, String description, LocalDateTime eventDateTime, SportDto sportType, TeamDto team1, TeamDto team2) {
+    public EventDto(Long id, String description, LocalDateTime dateTime, SportDto sportType, TeamDto team1, TeamDto team2) {
         this.id = id;
         this.description = description;
-        this.eventDateTime = eventDateTime;
+        this.dateTime = dateTime;
         this.sportType = sportType;
         this.team1 = team1;
         this.team2 = team2;
@@ -36,12 +36,12 @@ public class EventDto {
         this.description = description;
     }
 
-    public LocalDateTime getEventDateTime() {
-        return eventDateTime;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setEventDateTime(LocalDateTime eventDateTime) {
-        this.eventDateTime = eventDateTime;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public SportDto getSportType() {
