@@ -11,12 +11,13 @@ public class TeamEntity {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "_sport_id", nullable = false)
     private SportEntity sportType;
 
     public TeamEntity(){}
-    public TeamEntity(String name, SportEntity sportType){
+    public TeamEntity(Long id, String name, SportEntity sportType){
+        this.id = id;
         this.name = name;
         this.sportType = sportType;
     }

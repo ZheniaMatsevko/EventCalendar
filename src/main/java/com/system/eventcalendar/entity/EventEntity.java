@@ -16,20 +16,23 @@ public class EventEntity {
     @Column(nullable = false)
     private LocalDateTime dateTime;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "_sport_id", nullable = false)
     private SportEntity sportType;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne()
     @JoinColumn(name = "_team1_id", nullable = false)
     private TeamEntity team1;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne()
     @JoinColumn(name = "_team2_id", nullable = false)
     private TeamEntity team2;
 
 
     public EventEntity(){}
-    public EventEntity(String description, LocalDateTime dateTime, SportEntity sportType, TeamEntity team1, TeamEntity team2) {
+    public EventEntity(Long id, String description, LocalDateTime dateTime, SportEntity sportType, TeamEntity team1, TeamEntity team2) {
         this.description = description;
+        this.id = id;
         this.dateTime = dateTime;
         this.sportType = sportType;
         this.team1 = team1;
@@ -56,7 +59,7 @@ public class EventEntity {
         return dateTime;
     }
 
-    public void setDate(LocalDateTime dateTime) {
+    public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 

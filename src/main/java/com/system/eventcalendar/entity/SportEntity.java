@@ -9,11 +9,12 @@ public class SportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String name;
 
     public SportEntity(){}
-    public SportEntity(String name) {
+    public SportEntity(Long id, String name) {
+        this.id=id;
         this.name = name;
     }
 
