@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>All Events</title>
+    <script src="/js/filter-events-bySport-script.js"></script>
 </head>
 <body>
 
@@ -17,8 +18,6 @@
         <label for="sportTypeDropdown">Filter by Sport Type:</label>
         <select class="form-control" id="sportTypeDropdown" onchange="filterEventsBySport(this.value)">
             <option th:value="all" th:text="'All'" th:selected="${selectedSportId == null}"></option>
-
-            <!-- Options for other sports -->
             <option th:each="sport: ${sports}" th:value="${sport.id}" th:text="${sport.name}" th:selected="${sport.id == selectedSportId}"></option>
         </select>
     </div>
@@ -62,19 +61,6 @@
         </tbody>
     </table>
 </div>
-<!-- Include jQuery from CDN -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script>
-
-    function filterEventsBySport(sportId) {
-        var url = "/all-events";
-        if (sportId !== "all") {
-            url += "/bySport?id=" + sportId;
-        }
-        window.location.href = url;
-    }
-
-</script>
 </body>
 </html>

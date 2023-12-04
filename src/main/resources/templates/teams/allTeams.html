@@ -6,6 +6,7 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="/js/confirmation-script.js"></script>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
             <td th:text="${team.name}"></td>
             <td th:text="${team.sportType.name}"></td>
             <td>
-                <a class="btn btn-primary" th:attr="onclick='showConfirmationModal(\'' + ${team.name} + '\',\'' + ${team.id} + '\')'"
+                <a class="btn btn-primary" th:attr="onclick='showConfirmationModal(\'teams\',\'' + ${team.name} + '\',\'' + ${team.id} + '\')'"
                 >Delete</a>
             </td>
         </tr>
@@ -77,19 +78,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script>
-    function showConfirmationModal(teamName,teamId) {
-        console.log('showConfirmationModal called with teamId:', teamId);
-        var modalBody = document.getElementById('modalBody');
-        modalBody.innerHTML = 'Are you sure you want to delete '+teamName+'?';
-
-        $('#confirmDelete').click(function () {
-            window.location.href = '/all-teams/delete/' + teamId;
-        });
-
-        $('#confirmationModal').modal('show');
-    }
-
-</script>
 </body>
 </html>

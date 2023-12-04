@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Create New Event</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/event-form-script.js"></script>
 </head>
 <body>
-
 <div class="container mt-5">
     <h2>Create New Event</h2>
     <form th:action="@{/all-events/create}" method="post" id="createEventForm">
@@ -56,63 +57,5 @@
         <a th:href="@{/all-events}" class="btn btn-secondary">Back</a>
     </form>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-
-        $('#sportType').change(function () {
-            updateTeams();
-        });
-
-        function updateTeams() {
-            var selectedSport = $('#sportType').val();
-
-            $.ajax({
-                type:"GET",
-                url:"/teams/bySport",
-                data:{id:selectedSport},
-                success: function (teams) {
-
-                    $('#team1').empty();
-                    $('#team2').empty();
-
-                    $('#team1').append($('<option></option>').attr({'value': '', 'selected': 'selected', 'disabled': 'disabled'}).text('Select a Team'));
-                    $('#team2').append($('<option></option>').attr({'value': '', 'selected': 'selected', 'disabled': 'disabled'}).text('Select a Team'));
-
-                    teams.forEach(function (team) {
-                        var option = $('<option></option>').attr('value', team.id).text(team.name + ' - ' + team.sportType.name);
-                        $('#team1').append(option);
-                        $('#team2').append(option.clone());
-                    });
-                },
-                error: function () {
-                    console.log('Error fetching teams');
-                }
-            });
-        }
-        $('#team1').change(function () {
-            updateTeam2Selection();
-        });
-        $('#team2').change(function () {
-            updateTeam2Selection();
-        });
-
-        function updateTeam2Selection() {
-            // Get the selected value in Team 1
-            var team1Value = $('#team1').val();
-
-            // Disable the option with the same value in Team 2
-            $('#team2 option').prop('disabled', false);
-            if ($('#team2').val() === team1Value) {
-                $('#team2').val('');
-            }
-            $('#team2 option[value="' + team1Value + '"]').prop('disabled', true);
-
-            // If Team 2 has the same value as Team 1, reset the selection
-
-        }
-    });
-</script>
 </body>
 </html>
