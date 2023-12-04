@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create New Sport</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Create New Sport</h2>
+
+    <form th:action="@{/all-sports/create}" method="post">
+        <div class="form-group">
+            <label for="sportName">Sport Name:</label>
+            <input type="text" class="form-control" id="sportName" name="name" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Sport</button>
+        <a th:href="@{/all-sports}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+
+</body>
+</html>

@@ -3,6 +3,8 @@ package com.system.eventcalendar.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Event")
@@ -16,27 +18,29 @@ public class EventEntity {
     @Column(nullable = false)
     private LocalDateTime dateTime;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "_sport_id", nullable = false)
     private SportEntity sportType;
 
-    @ManyToOne()
-    @JoinColumn(name = "_team1_id", nullable = false)
-    private TeamEntity team1;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Team_Event",
+            joinColumns = @JoinColumn(name = "_event_id",nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "_team_id",nullable = false),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"event_id", "team_id"})
+    )
+    private List<TeamEntity> teams;
 
-    @ManyToOne()
-    @JoinColumn(name = "_team2_id", nullable = false)
-    private TeamEntity team2;
 
-
-    public EventEntity(){}
+    public EventEntity(){teams = new ArrayList<>();}
     public EventEntity(Long id, String description, LocalDateTime dateTime, SportEntity sportType, TeamEntity team1, TeamEntity team2) {
         this.description = description;
         this.id = id;
         this.dateTime = dateTime;
         this.sportType = sportType;
-        this.team1 = team1;
-        this.team2 = team2;
+        teams = new ArrayList<>();
+        teams.add(team1);
+        teams.add(team2);
     }
 
     public Long getId() {
@@ -72,18 +76,25 @@ public class EventEntity {
     }
 
     public TeamEntity getTeam1() {
-        return team1;
+        return teams.get(0);
     }
 
     public void setTeam1(TeamEntity team1) {
-        this.team1 = team1;
+        teams.add(team1);
     }
 
     public TeamEntity getTeam2() {
-        return team2;
+        return teams.get(1);
     }
 
     public void setTeam2(TeamEntity team2) {
-        this.team2 = team2;
+        teams.add(team2);
+    }
+
+    public void setTeams(List<TeamEntity> teams){
+        this.teams=teams;
+    }
+    public List<TeamEntity> getTeams(){
+        return this.teams;
     }
 }

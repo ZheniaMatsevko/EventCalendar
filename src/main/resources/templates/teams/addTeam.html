@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create New Team</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Create New Team</h2>
+
+    <form th:action="@{/all-teams/create}" method="post">
+        <div class="form-group">
+            <label for="teamName">Team Name:</label>
+            <input type="text" class="form-control" id="teamName" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="sportType">Sport Type:</label>
+            <select class="form-control" id="sportType" name="sportId" required>
+                <option th:each="sport: ${sports}" th:value="${sport.id}" th:text="${sport.name}"/>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Team</button>
+        <a th:href="@{/all-teams}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+
+</body>
+</html>

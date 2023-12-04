@@ -26,7 +26,6 @@ public class SportServiceImpl implements ISportService {
     public SportServiceImpl(ISportRepository repository) {
         this.repository = repository;
     }
-    //TODO empty sport list
     @Override
     public List<SportDto> getAllSportTypes() {
         logger.info("Getting all sports");

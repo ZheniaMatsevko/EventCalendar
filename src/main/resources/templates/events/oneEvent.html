@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Event Details</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Event Details</h2>
+
+    <table class="table">
+        <tbody>
+        <!-- Display details for one event -->
+        <tr>
+            <th>Description</th>
+            <td th:text="${event.description}"></td>
+        </tr>
+        <tr>
+            <th>Date and Time</th>
+            <td th:text="${#temporals.format(event.dateTime, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        <tr>
+            <th>Sport Type</th>
+            <td th:text="${event.sportType.name}"></td>
+        </tr>
+        <tr>
+            <th>Team 1</th>
+            <td th:text="${event.teams[0].name}"></td>
+        </tr>
+        <tr>
+            <th>Team 2</th>
+            <td th:text="${event.teams[1].name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Buttons for delete, update, and back -->
+    <div class="text-center">
+        <a th:href="@{'/all-events/delete/' + ${event.id}}" class="btn btn-danger" role="button">Delete</a>
+        <a th:href="@{'/all-events/update/' + ${event.id}}" class="btn btn-primary" role="button">Update</a>
+        <a th:href="@{/all-events}" class="btn btn-secondary" role="button">Back</a>
+    </div>
+</div>
+
+</body>
+</html>

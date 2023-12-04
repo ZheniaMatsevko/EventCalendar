@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>All Events</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>All Events</h2>
+
+    <!-- Dropdown for Sport Types -->
+    <div class="form-group">
+        <label for="sportTypeDropdown">Filter by Sport Type:</label>
+        <select class="form-control" id="sportTypeDropdown" onchange="filterEventsBySport(this.value)">
+            <option th:value="all" th:text="'All'" th:selected="${selectedSportId == null}"></option>
+
+            <!-- Options for other sports -->
+            <option th:each="sport: ${sports}" th:value="${sport.id}" th:text="${sport.name}" th:selected="${sport.id == selectedSportId}"></option>
+        </select>
+    </div>
+    <!-- Link to create a new event -->
+    <a th:href="@{/all-events/create}" class="btn btn-primary mb-3" role="button">
+        Create New Event
+    </a>
+    <a th:href="@{/all-sports}" class="btn btn-primary mb-3" role="button">
+        Sport Menu
+    </a>
+    <a th:href="@{/all-teams}" class="btn btn-primary mb-3" role="button">
+        Team Menu
+    </a>
+
+
+    <table class="table" id="eventsTable">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Date and Time</th>
+            <th>Sport Type</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the list of events and display information for each event -->
+        <tr th:each="event : ${events}">
+            <td th:text="${event.description}"></td>
+            <td th:text="${#temporals.format(event.dateTime, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${event.sportType.name}"></td>
+            <td th:if="${event.teams != null and event.teams.size() > 1}" th:text="${event.teams[0].name}"></td>
+            <td th:if="${event.teams != null and event.teams.size() > 1}" th:text="${event.teams[1].name}"></td>
+            <td>
+                <a th:href="@{/all-events/{eventId}(eventId=${event.id})}" class="btn btn-info btn-sm view-details-btn" role="button">
+                    View Details
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Include jQuery from CDN -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+    function filterEventsBySport(sportId) {
+        var url = "/all-events";
+        if (sportId !== "all") {
+            url += "/bySport?id=" + sportId;
+        }
+        window.location.href = url;
+    }
+
+</script>
+</body>
+</html>

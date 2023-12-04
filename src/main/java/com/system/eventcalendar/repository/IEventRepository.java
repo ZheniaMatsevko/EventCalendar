@@ -12,5 +12,5 @@ import java.util.List;
 public interface IEventRepository extends JpaRepository<EventEntity, Long> {
     List<EventEntity> findByDateTimeBetween(LocalDateTime dateTime, LocalDateTime dateTime2);
 
-    List<EventEntity> findBySportTypeId(Long sportId);
+    List<EventEntity> findBySportTypeIdOrderByDateTimeAsc(Long sportId);
 }

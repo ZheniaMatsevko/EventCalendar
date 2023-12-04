@@ -10,9 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,7 +34,7 @@ public class EventServiceImpl implements IEventService {
     @Override
     public List<EventDto> getAllEvents() {
         logger.info("Getting all events");
-        return repository.findAll().stream().map(IEventMapper.INSTANCE::entityToDto).collect(Collectors.toList());
+        return repository.findAll(Sort.by(Sort.Order.asc("dateTime"))).stream().map(IEventMapper.INSTANCE::entityToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -64,7 +66,7 @@ public class EventServiceImpl implements IEventService {
 
     @Override
     public List<EventDto> getEventsBySportId(Long id) {
-        List<EventEntity> events = repository.findBySportTypeId(id);
+        List<EventEntity> events = repository.findBySportTypeIdOrderByDateTimeAsc(id);
 
         logger.info("Retrieved {} events for sport with id" + id, events.size());
 
