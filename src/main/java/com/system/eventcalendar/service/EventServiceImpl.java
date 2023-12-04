@@ -52,8 +52,6 @@ public class EventServiceImpl implements IEventService {
         LocalDateTime startDateTime = date.toLocalDate().atStartOfDay();
         LocalDateTime endDateTime = startDateTime.plusDays(1);
 
-
-
         List<EventEntity> events = repository.findByDateTimeBetween(startDateTime, endDateTime);
 
         logger.info("Retrieved {} events on " + date, events.size());

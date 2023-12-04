@@ -7,7 +7,6 @@ import java.util.List;
 public interface ISportService {
     List<SportDto> getAllSportTypes();
     SportDto getSportById(long id);
-    //SportDto getSportByName(String name);
     SportDto addNewSport(SportDto sportDto);
     void deleteSportById(Long id);
 }

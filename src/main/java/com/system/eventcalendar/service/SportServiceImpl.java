@@ -43,12 +43,6 @@ public class SportServiceImpl implements ISportService {
             throw new EntityNotFoundException("Sport with id " + id + " not found");
     }
 
-   /*
-    @Override
-    public SportDto getSportByName(String name) {
-        return null;
-    }
-*/
     @Override
     public SportDto addNewSport(SportDto sportDto) {
         logger.info("Adding sport with ID: {}", sportDto.getId());

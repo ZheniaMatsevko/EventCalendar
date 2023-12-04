@@ -49,6 +49,7 @@ public class EventApiController {
             String message = ExceptionHelper.formErrorMessage(bindingResult);
             throw new ValidationException(message);
         }
+        event.setId(id);
         eventsService.updateEvent(event);
     }
 

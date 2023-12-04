@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TeamDto {
     private Long id;
-    @NotBlank(message = "Sport name can`t be blank")
+    @NotBlank(message = "Team name can`t be blank")
     private String name;
     @NotNull(message = "Sport must not be null")
     private SportDto sportType;
