@@ -16,29 +16,29 @@ Before you begin, ensure you have met the following requirements:
 ### Installation
 
 1. Clone the repository:
-   
+```bash   
    git clone https://github.com/ZheniaMatsevko/sport-events-calendar.git
-
-3. Navigate to the project directory:
-   
+```
+2. Navigate to the project directory:
+```bash    
    cd sport-events-calendar
-
-4. Update the application.properties file with your database configuration:
-   
+```
+3. Update the application.properties file with your database configuration:
+```bash    
    spring.datasource.url=jdbc:mysql://localhost:3306/sport_events_db
 
    spring.datasource.username=your_mysql_username
 
    spring.datasource.password=your_mysql_password
-
-6. Build the project:
-   
+```
+4. Build the project:
+```bash    
    mvn clean install
-
-8. Run the application:
-   
+```
+5. Run the application:
+```bash    
    java -jar target/EventCalendar-0.0.1-SNAPSHOT.jar
-
+```
 The frontend part of application should now be running at http://localhost:8080/all-events.
 
 ### Usage
