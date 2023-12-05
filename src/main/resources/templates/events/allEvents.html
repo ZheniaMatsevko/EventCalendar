@@ -48,7 +48,7 @@
         <!-- Iterate over the list of events and display information for each event -->
         <tr th:each="event : ${events}">
             <td th:text="${event.description}"></td>
-            <td th:text="${#temporals.format(event.dateTime, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#temporals.format(event.dateTime, 'yyyy-MM-dd HH:mm')+ ' ' + event.dateTime.dayOfWeek.toString()}"></td>
             <td th:text="${event.sportType.name}"></td>
             <td th:if="${event.teams != null and event.teams.size() > 1}" th:text="${event.teams[0].name}"></td>
             <td th:if="${event.teams != null and event.teams.size() > 1}" th:text="${event.teams[1].name}"></td>
