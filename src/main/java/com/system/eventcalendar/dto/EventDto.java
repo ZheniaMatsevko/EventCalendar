@@ -77,17 +77,17 @@ public class EventDto{
         this.sportType = sportType;
     }
 
-    public TeamDto getTeam1() {
-        return teams.get(0);
-    }
+    //public TeamDto getTeam1() {
+     //   return teams.get(0);
+    //}
 
     public void setTeam1(TeamDto team1) {
         teams.add(team1);
     }
 
-    public TeamDto getTeam2() {
+    /*public TeamDto getTeam2() {
         return teams.get(1);
-    }
+    }*/
 
     public void setTeam2(TeamDto team2) {
         teams.add(team2);
