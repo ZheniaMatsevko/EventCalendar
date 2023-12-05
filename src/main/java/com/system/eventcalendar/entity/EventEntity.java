@@ -27,7 +27,7 @@ public class EventEntity {
             name = "Team_Event",
             joinColumns = @JoinColumn(name = "_event_id",nullable = false),
             inverseJoinColumns = @JoinColumn(name = "_team_id",nullable = false),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"event_id", "team_id"})
+            uniqueConstraints = @UniqueConstraint(columnNames = {"_event_id", "_team_id"})
     )
     private List<TeamEntity> teams;
 
