@@ -100,9 +100,7 @@ public class EventServiceImpl implements IEventService {
         Optional<EventEntity> optionalEvent = repository.findById(updatedEvent.getId());
 
         if (optionalEvent.isPresent()) {
-            EventEntity existingEvent = optionalEvent.get();
-            BeanUtils.copyProperties(updatedEvent, existingEvent, "id"); // Exclude copying the 'id'
-            repository.save(existingEvent);
+            repository.save(IEventMapper.INSTANCE.dtoToEntity(updatedEvent));
 
             logger.info("Event updated with ID: {}", updatedEvent.getId());
         } else {

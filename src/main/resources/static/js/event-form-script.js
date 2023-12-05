@@ -1,8 +1,5 @@
 
 $(document).ready(function () {
-    if(isUpdateForm())
-        updateTeams();
-
     $('#sportType').change(function () {
         updateTeams();
     });
@@ -41,6 +38,7 @@ function updateTeams() {
         }
     });
 }
+
 function updateTeam2Selection() {
     // Get the selected value in Team 1
     var team1Value = $('#team1').val();
@@ -51,7 +49,4 @@ function updateTeam2Selection() {
         $('#team2').val('');
     }
     $('#team2 option[value="' + team1Value + '"]').prop('disabled', true);
-}
-function isUpdateForm() {
-    return $('#updateEventForm').length > 0;
 }

@@ -38,7 +38,7 @@
         <div class="form-group">
             <label for="team1">Team 1:</label>
             <select class="form-control" id="team1" name="team1Id" required>
-                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name + ' - ' + team.sportType.name}" th:selected="${team.id == event.team1.id}"></option>
+                <option th:each="team : ${teams}" th:disabled="${team.id==event.teams[1].id}" th:if="${team.sportType.id == event.sportType.id}" th:value="${team.id}" th:text="${team.name + ' - ' + team.sportType.name}" th:selected="${team.id == event.teams[0].id}"></option>
             </select>
         </div>
 
@@ -46,7 +46,7 @@
         <div class="form-group">
             <label for="team2">Team 2:</label>
             <select class="form-control" id="team2" name="team2Id" required>
-                <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name + ' - ' + team.sportType.name}" th:selected="${team.id == event.team2.id}"></option>
+                <option th:each="team : ${teams}" th:disabled="${team.id==event.teams[0].id}"  th:if="${team.sportType.id == event.sportType.id}" th:value="${team.id}" th:text="${team.name + ' - ' + team.sportType.name}" th:selected="${team.id == event.teams[1].id}"></option>
             </select>
         </div>
 
